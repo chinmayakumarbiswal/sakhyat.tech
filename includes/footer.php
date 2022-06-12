@@ -9,71 +9,38 @@
                                 </h4>
                                 <div class="widget-content">
 
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/thumb-6.jpg" 
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Design</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
+                                    <?php
+                                        $postQuery="SELECT * FROM posts ORDER BY id DESC LIMIT 3";
+                                        $runPQ=mysqli_query($db,$postQuery);                                        
+                                        while($post=mysqli_fetch_assoc($runPQ)){
+                                            $post_images=getImagesByPost($db,$post['id']);
+                                            ?>
+                                                <article class="post mb-3">
+                                                    <div class="post-content media align-items-center">
+                                                        <div class="fbt-item-thumbnail clearfix">
+                                                            <a href="post.php?id=<?=$post['id']?>">
+                                                                <img alt="" class="post-thumbnail lazyloaded" data-src="images/<?=$post_images ?>" 
+                                                                    src="images/<?=$post_images?>">
+                                                            </a>
+                                                        </div>
+                                                        <div class="ml-3 fbt-title-caption media-body">
+                                                            <span class="pp-post-tag"><?=getCategory($db,$post['category_id'])?></span>
+                                                            <h3 class="post-title">
+                                                                <a href="post.php?id=<?=$post['id']?>">
+                                                                <?=$post['title']?>
+                                                                </a>
+                                                            </h3>
+                                                            <div class="post-meta">
+                                                                <span class="post-date published"><?=date('F jS, Y',strtotime($post['created_at']))?></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            <?php
+                                        }
+                                    ?>
+                                    
 
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/thumb-2.jpg" 
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Tech</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Nunc tellus libero, tempus id luctus eget, fermentum.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 27, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/thumb-5.jpg" 
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Featured</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Mihi vero, inquit, placet agi subtilius et pressius.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 27, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
 
                                 </div>
                             </div><!-- .fbt_list_posts -->
@@ -85,18 +52,13 @@
                                 <div class="footer-2 section">
                                     <div class="logoImage">
                                         <div class="widget-content">
-                                            <img alt="" src="https://fbtemplates.net/html/nemesis-v1.0.6/images/logo-light.png">
+                                            <img alt="" src="images/logo.png" height="60px" width="auto">
                                         </div>
                                     </div>
                                     <div class="widget Text">
                                         <div class="widget-content">
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                                Ut porttitor leo vel nulla posuere accumsan. 
-                                                Suspendisse sed tortor eget justo aliquam euismod. 
-                                                Ut interdum diam nec imperdiet elementum. Proin condimentum faucibus placerat. 
-                                                Donec massa justo, porttitor tincidunt eros a, vehicula malesuada tortor. 
-                                                Praesent nec sem ut justo.
+                                                We are the student of Centurion University of Technology And Management. We Created this blog website for Domain project.
                                             </p>
                                         </div>
                                     </div>
@@ -110,11 +72,10 @@
                                         </h4>
                                         <div class="widget-content list-label-widget-content">
                                             <ul class="list-unstyled">
-                                                <li><a class="label-name" href="#">Home</a></li>
-                                                <li><a class="label-name" href="#">Lifestyle</a></li>
-                                                <li><a class="label-name" href="#"> People</a></li>
-                                                <li><a class="label-name" href="#">Slider</a></li>
-                                                <li><a class="label-name" href="#">Sport</a></li>
+                                                <li><a class="label-name" href="index.php">HOME</a></li>
+                                                <li><a class="label-name" href="about.php">ABOUT</a></li>
+                                                <li><a class="label-name" href="contact.php">CONTACT</a></li>
+                                                <li><a class="label-name" href="policy.php">POLICY</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -128,34 +89,22 @@
                                         </h4>
                                         <div class="widget-content list-label-widget-content">
                                             <ul class="list-unstyled">
-                                                <li><a class="label-name" href="#">Business</a></li>
-                                                <li><a class="label-name" href="#">Design</a></li>
-                                                <li><a class="label-name" href="#">Lifestyle</a></li>
-                                                <li><a class="label-name" href="#">Technology</a></li>
-                                                <li><a class="label-name" href="#">Training</a></li>
+                                                <li><a class="label-name" href="#">GADGETS</a></li>
+                                                <li><a class="label-name" href="#">WEB</a></li>
+                                                <li><a class="label-name" href="#">TRENDING</a></li>
+                                                <li><a class="label-name" href="#">ELECTRONICS</a></li>
+                                                <li><a class="label-name" href="#">BOOKS</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 last">
-                                <div class="footer-5 section">
-                                    <div class="widget">
-                                        <h4 class="title title-heading">
-                                            Account
-                                        </h4>
-                                        <div class="widget-content list-label-widget-content">
-                                            <ul class="list-unstyled">
-                                                <li><a class="label-name" href="#">Business</a></li>
-                                                <li><a class="label-name" href="#">Design</a></li>
-                                                <li><a class="label-name" href="#">Entertainment</a></li>
-                                                <li><a class="label-name" href="#">Featured</a></li>
-                                                <li><a class="label-name" href="#">Technology</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            
+                            
+
+
+                            
                         </div>
                     </div>
                 </div>
@@ -166,7 +115,7 @@
                         <div class="col-lg-6">
                             <div class="copyright-section text-center text-lg-left">
                                 ©
-                                <script>document.write(new Date().getFullYear());</script> Nemesis | All Rights Reserved
+                                <script>document.write(new Date().getFullYear());</script> <a href="https://chinmayakumarbiswal.in">Sakhyat.Tech By Chinmaya</a> | All Rights Reserved 
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -175,19 +124,19 @@
                                     <div class="widget-content">
                                         <ul class="nav">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
+                                                <a class="nav-link" href="https://www.facebook.com/situ.chinmaya"><i class="fab fa-facebook"></i></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
+                                                <a class="nav-link" href="https://twitter.com/Chinmaya_situ?s=09"><i class="fab fa-twitter"></i></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
+                                                <a class="nav-link" href="https://www.instagram.com/chinmaya.situ/"><i class="fab fa-instagram"></i></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
+                                                <a class="nav-link" href="https://www.linkedin.com/in/chinmaya-kumar-biswal-16045"><i class="fab fa-linkedin"></i></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-youtube-play"></i></a>
+                                                <a class="nav-link" href="https://api.whatsapp.com/send?phone=919556328216&text=hey chinmaya from Sakhyat.tech"><i class="fab fa-whatsapp"></i></a>
                                             </li>
                                         </ul>
                                     </div>

@@ -1,6 +1,12 @@
 <?php
     require('includes/database.php');
     require('includes/function.php');
+    if($_GET['id']){
+
+    }
+    else{
+        header('location:index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,31 +15,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nemesis | Magazine Blog HTML Template</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>SakhyatTech</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:600,700%7CNunito:300,400" rel="stylesheet">
     <link href="./css/animate.min.css" rel="stylesheet" media="screen">
     <link href="./css/fonts.css" rel="stylesheet" media="screen">
     <link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="./css/style.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
-
-    <div id="fbt-content-overlay" onclick="closeNav()"></div>
-    <form autocomplete="off" id="search" role="search">
-        <div class="input">
-            <input class="search" name="search" placeholder="Search..." type="text" />
-            <button class="submit fa fa-search" type="submit" value=""></button>
-        </div>
-        <button id="close" type="reset" value="">×</button>
-    </form><!-- #search -->
-
-    <div id="page-wrapper" class="magazine-view item-view">
-
-
-    
-
     <!-- IMPORT NAVBAR HERE  --><!-- IMPORT NAVBAR HERE  --><!-- IMPORT NAVBAR HERE  --><!-- IMPORT NAVBAR HERE  --><!-- IMPORT NAVBAR HERE  -->
     <?php
         include_once('includes/navbar.php')
@@ -58,7 +52,7 @@
 
                                     <div class="blog-post fbt-item-post">
                                         
-                                    <?php
+                                    <?php                                        
                                         $post_id=$_GET['id'];
                                         $postQuery="SELECT * FROM posts WHERE id=$post_id";
                                         $runPQ=mysqli_query($db,$postQuery);                                        
@@ -118,13 +112,11 @@
                                                         <div class="col-xl-5 text-center text-xl-right">
                                                             <div class="sharepost clearfix pr-xl-5">
                                                                 <div class="post-share clearfix">
-                                                                    <ul>
-                                                                        <li><a class="facebook fbt-share" href="#" rel="nofollow" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                                        <li><a class="twitter fbt-share" href="#" rel="nofollow" target="_blank"><i class="fa fa-twitter"></i></a> </li>
-                                                                        <li><a class="linkedin fbt-linkedin" href="#" rel="nofollow" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                                                        <li><a class="pinterest fbt-pinterest" href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a></li>
-                                                                        <li><a class="email fbt-email" href="#" rel="nofollow"><i class="fa fa-envelope-o"></i></a></li>
-                                                                    </ul>
+                                                                    <!-- <ul>
+                                                                        <li><a class="facebook fbt-share" href="https://www.facebook.com/sharer.php?u=chinmayakumarbiswal.in" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                                        <li><a class="twitter fbt-share" href="https://twitter.com/share?url=chinmayakumarbiswal.in" rel="nofollow" target="_blank"><i class="fa fa-twitter"></i></a> </li>
+                                                                        
+                                                                    </ul> -->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -144,97 +136,38 @@
                                                 </div>
                                                 <div id="related-posts">
                                                     <div class="row px-2">
+                                                        
+                                                    <?php
+                                                        $pquery="SELECT * FROM posts WHERE category_id={$post['category_id']} ORDER BY id DESC";
+                                                        $prun=mysqli_query($db,$pquery);
+                                                        while($rpost=mysqli_fetch_assoc($prun)){
+                                                            $rpost_images=getImagesByPost($db,$rpost['id']);
+                                                            if($rpost['id']==$post_id){
+                                                                continue;
+                                                            }
+                                                            ?>
+                                                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
+                                                                    <div class="fbt-post-thumbnail">
+                                                                        <a href="post.php?id=<?=$rpost['id']?>">
+                                                                            <img alt="" class="post-thumbnail lazyloaded" data-src="images/<?=$rpost_images ?>"
+                                                                                src="images/<?=$rpost_images ?>">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="fbt-post-caption text-center mt-2 px-2">
+                                                                        <h5>
+                                                                            <a href="post.php?id=<?=$rpost['id']?>">
+                                                                                <?=$rpost['title']?>
+                                                                            </a>
+                                                                        </h5>
+                                                                    </div>
+                                                                </div>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                        
 
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/mag-img-1.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/mag-img-7.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Quae quo sunt excelsiores, eo dant clariora indicia naturae.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/mag-img-13.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Sed quod proximum fuit non vidit. Tu quidem reddes.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/mag-img-21.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Nulla profecto est, quin suam vim retineat extremum.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/mag-img-18.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Non dolere, inquam, istud quam vim habeat postea.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="https://fbtemplates.net/html/nemesis-v1.0.6/images/mag-img-19.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Nulla profecto est, quin suam vim retineat a primo ad.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
+
+
 
                                                     </div>
                                                 </div>
@@ -270,6 +203,7 @@
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/plugins.js"></script>
     <script src="./js/main.js"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-62a47696f6cce6bf"></script>
 
 </body>
 

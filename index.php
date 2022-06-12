@@ -17,27 +17,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nemesis | Magazine Blog HTML Template</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>SakhyatTech</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:600,700%7CNunito:300,400" rel="stylesheet">
     <link href="./css/animate.min.css" rel="stylesheet" media="screen">
     <link href="./css/fonts.css" rel="stylesheet" media="screen">
     <link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="./css/style.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 
 <body>
-
-    <div id="fbt-content-overlay" onclick="closeNav()"></div>
-    <form autocomplete="off" id="search" role="search">
-        <div class="input">
-            <input class="search" name="search" placeholder="Search..." type="text" />
-            <button class="submit fa fa-search" type="submit" value=""></button>
-        </div>
-        <button id="close" type="reset" value="">×</button>
-    </form><!-- #search -->
-
-    <div id="page-wrapper" class="magazine-view feed-view">
 
     <!-- IMPORT NAVBAR HERE  --><!-- IMPORT NAVBAR HERE  --><!-- IMPORT NAVBAR HERE  --><!-- IMPORT NAVBAR HERE  --><!-- IMPORT NAVBAR HERE  -->
     <?php
@@ -166,7 +159,7 @@
                                                                 <span class="post-date published">Posted On <?=date('F jS, Y',strtotime($post['created_at']))?></span>
                                                             </div>
                                                             <p class="post-excerpt text-truncate">
-                                                            <?=$post['content']?>
+                                                                <?=$post['content']?>
                                                             </p>
                                                         </div>
                                                     </div>
