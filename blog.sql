@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2022 at 08:56 PM
+-- Generation Time: Jun 13, 2022 at 10:06 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `blog`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `userName` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `userName`, `email`, `password`) VALUES
+(1, 'Chinmaya Kumar Biswal', 'situ@chinmayakumarbiswal.in', 'Chinmaya@12345');
 
 -- --------------------------------------------------------
 
@@ -66,7 +86,9 @@ INSERT INTO `images` (`id`, `post_id`, `image`) VALUES
 (3, 2, 'best-laptop-for-video-editing-2022.jpg'),
 (4, 4, 'cheap-web-hosting-india-2021.jpg'),
 (5, 5, 'dusk-smart-glass.png'),
-(6, 1, 'google-photos-backup-tutorial.jpg');
+(6, 1, 'google-photos-backup-tutorial.jpg'),
+(8, 15, 'best-minimalist-books-768x435.jpg'),
+(9, 16, 'E3-2021-GAMES.jpg');
 
 -- --------------------------------------------------------
 
@@ -99,6 +121,12 @@ INSERT INTO `posts` (`id`, `title`, `content`, `created_at`, `category_id`) VALU
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -121,6 +149,12 @@ ALTER TABLE `posts`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -130,13 +164,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
