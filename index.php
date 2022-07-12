@@ -69,7 +69,7 @@
                                                     // echo $post_images;
                                                     ?>
                                     <img alt="" class="post-thumbnail lazyloaded" data-src="images/<?=$post_images ?>"
-                                        src="images/<?=$post_images ?>">
+                                        src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$post_images ?>">
                                     <?php
                                                 
                                                 ?>
@@ -149,8 +149,8 @@
                                                                     // echo $post_images;
                                                                     ?>
                                                 <img alt="" class="post-thumbnail lazyloaded"
-                                                    data-src="images/<?=$post_images ?>"
-                                                    src="images/<?=$post_images ?>">
+                                                    data-src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$post_images ?>"
+                                                    src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$post_images ?>">
                                                 <?php
                                                                 
                                                                 ?>
@@ -281,6 +281,7 @@
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/plugins.js"></script>
     <script src="./js/main.js"></script>
+
 
 </body>
 

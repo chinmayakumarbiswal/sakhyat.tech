@@ -72,7 +72,7 @@
                                                     // echo $post_images;
                                                     ?>
                                             <img alt="" class="post-thumbnail lazyloaded"
-                                                data-src="images/<?=$post_images ?>" src="images/<?=$post_images ?>">
+                                                data-src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$post_images ?>" src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$post_images ?>">
                                             <?php
                                                 
                                                 ?>
@@ -158,8 +158,8 @@
                                                         <div class="fbt-post-thumbnail">
                                                             <a href="post.php?id=<?=$rpost['id']?>">
                                                                 <img alt="" class="post-thumbnail lazyloaded"
-                                                                    data-src="images/<?=$rpost_images ?>"
-                                                                    src="images/<?=$rpost_images ?>">
+                                                                    data-src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$rpost_images ?>"
+                                                                    src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$rpost_images ?>">
                                                             </a>
                                                         </div>
                                                         <div class="fbt-post-caption text-center mt-2 px-2">
