@@ -19,7 +19,7 @@
                                                     <div class="post-content media align-items-center">
                                                         <div class="fbt-item-thumbnail clearfix">
                                                             <a href="post.php?id=<?=$post['id']?>">
-                                                                <img alt="" class="post-thumbnail lazyloaded" data-src="images/<?=$post_images ?>" 
+                                                                <img alt="" class="post-thumbnail lazyloaded" data-src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$post_images ?>" 
                                                                     src="https://s3.ap-south-1.amazonaws.com/sakhyat.tect/<?=$post_images?>">
                                                             </a>
                                                         </div>
