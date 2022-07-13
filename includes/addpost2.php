@@ -1,7 +1,7 @@
 <?php
-$IAM_KEY = 'AKIAWBYXXUVGJAVLT5VF';
-$IAM_SECRET = 'fGMc02iUlCcjJkwJ7Jgnl/J4O53T6TOh/e4EUxOl';
-$bucket = 'arn:aws:s3:::sakhyat.tect';
+$IAM_KEY = 'YOUR KEY';
+$IAM_SECRET = 'YOUR SECRET KEY';
+$bucket = 'YOUR BUCKET NAME';
 
 
 require 'vendor/autoload.php';
